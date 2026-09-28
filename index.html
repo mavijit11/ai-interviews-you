@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') document.documentElement.classList.add('light');
+    })();
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avijit Mondal | International Business & B2B Exhibition Management</title>
+  <meta name="description" content="Senior Manager, International Business with 12+ years of experience in business development, exhibitions, client communication, tenders, and data-led thinking." />
+
+  <meta property="og:title" content="Avijit Mondal | International Business & B2B Exhibition Management" />
+  <meta property="og:description" content="Business development, client communication, tenders, and B2B exhibition management with a data-led approach." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Avijit Mondal | International Business & B2B Exhibition Management" />
+  <meta name="twitter:description" content="Business development, client communication, tenders, and B2B exhibition management with a data-led approach." />
+
+  <!-- Add og:image later: 1200x630 PNG matching dark theme -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎪</text></svg>">
+
+  <style>
+    :root{
+      --bg:#020a18;
+      --bg-grad:linear-gradient(170deg,#020a18 0%,#041028 40%,#06142e 70%,#020a18 100%);
+      --surface:rgba(8,24,56,0.85);
+      --border:rgba(0,170,255,0.12);
+      --border-glow:rgba(0,170,255,0.3);
+      --text:#d0e0f0;
+      --text-bright:#e8f0ff;
+      --text-dim:#6888aa;
+      --neon:#00aaff;
+      --cyan:#00e5ff;
+      --green:#00ff88;
+      --amber:#ffaa00;
+      --red:#ff4466;
+      --purple:#aa66ff;
+    }
+
+    html.light{
+      --bg:#eef3fb;
+      --bg-grad:linear-gradient(170deg,#eef3fb 0%,#dfe8f7 40%,#d5e4f8 70%,#eef3fb 100%);
+      --surface:rgba(255,255,255,0.88);
+      --border:rgba(0,100,180,0.12);
+      --border-glow:rgba(0,120,220,0.22);
+      --text:#29405b;
+      --text-bright:#102033;
+      --text-dim:#667b95;
+      --neon:#0078d4;
+      --cyan:#008ccf;
+      --green:#0a9b65;
+      --amber:#c77900;
+      --red:#c53b5d;
+      --purple:#7354d9;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,sans-serif;
+      font-size:16px;
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      color:var(--text);
+      background:var(--bg);
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:var(--bg-grad);
+      z-index:-5;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size:60px 60px;
+      z-index:-4;
+      pointer-events:none;
+    }
+
+    .orb{
+      position:fixed;
+      width:500px;
+      height:500px;
+      border-radius:50%;
+      filter:blur(100px);
+      opacity:.08;
+      z-index:-3;
+      animation:float 28s infinite linear;
+    }
+
+    .orb1{background:var(--neon);top:-150px;left:-180px;}
+    .orb2{background:var(--purple);right:-180px;top:30%;}
+    .orb3{background:var(--cyan);bottom:-180px;left:65%;}
+
+    @keyframes float{
+      0%{transform:translate(0,0)}
+      50%{transform:translate(80px,-50px)}
+      100%{transform:translate(0,0)}
+    }
+
+    a{
+      color:var(--neon);
+      text-decoration:none;
+      transition:.3s;
+    }
+
+    a:hover{
+      color:var(--cyan);
+      text-shadow:0 0 12px var(--cyan);
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      backdrop-filter:blur(20px);
+      background:rgba(5,15,35,0.65);
+      border-bottom:1px solid var(--border);
+    }
+
+    html.light header{
+      background:rgba(255,255,255,0.75);
+    }
+
+    .header-inner,
+    .container{
+      max-width:880px;
+      margin:auto;
+      padding:0 20px;
+    }
+
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:72px;
+    }
+
+    .logo{
+      font-weight:700;
+      color:var(--text-bright);
+    }
+
+    .icons{
+      display:flex;
+      gap:10px;
+    }
+
+    .icon-btn{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:var(--surface);
+      color:var(--text);
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .icon-btn:hover{
+      border-color:var(--border-glow);
+      transform:translateY(-2px);
+    }
+
+    main{
+      position:relative;
+      z-index:1;
+      padding:60px 0 80px;
+    }
+
+    .hero h1{
+      font-size:3rem;
+      margin:0;
+      color:var(--text-bright);
+    }
+
+    .role{
+      color:var(--neon);
+      font-weight:600;
+      margin:12px 0 25px;
+    }
+
+    .hero-line{
+      font-size:1.35rem;
+      max-width:760px;
+      color:var(--text-bright);
+      margin-bottom:35px;
+    }
+
+    .cta{
+      display:inline-block;
+      padding:14px 24px;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--neon),var(--cyan));
+      color:#00131f;
+      font-weight:700;
+    }
+
+    .section{
+      margin-top:28px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:22px;
+      overflow:hidden;
+    }
+
+    .section-header{
+      width:100%;
+      background:none;
+      border:none;
+      color:inherit;
+      padding:22px;
+      display:flex;
+      align-items:center;
+      cursor:pointer;
+      text-align:left;
+    }
+
+    .num{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      border:1px solid var(--border-glow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-right:16px;
+      color:var(--cyan);
+      flex-shrink:0;
+    }
+
+    .title{
+      flex:1;
+      font-weight:600;
+      color:var(--text-bright);
+    }
+
+    .pm{
+      font-size:1.3rem;
+      color:var(--text-dim);
+    }
+
+    .content{
+      max-height:800px;
+      overflow:hidden;
+      transition:max-height .45s ease;
+    }
+
+    .content.closed{
+      max-height:0;
+    }
+
+    .inner{
+      padding:0 22px 22px;
+    }
+
+    ul{
+      padding-left:20px;
+    }
+
+    footer{
+      text-align:center;
+      padding:50px 20px;
+      color:var(--text-dim);
+      border-top:1px solid var(--border);
+      margin-top:60px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Avijit Mondal</div>
+
+    <div class="icons">
+      <button class="icon-btn" id="themeBtn" title="Toggle theme">☀️</button>
+      <button class="icon-btn" id="toggleAll" title="Collapse or expand all">−</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <section class="hero">
+      <h1>Avijit Mondal</h1>
+
+      <div class="role">
+        Senior Manager, International Business • Client Communication • Tender Specialist • Business Case Analyst
+      </div>
+
+      <div class="hero-line">
+        I connect business development, client communication, and B2B exhibition management with data-led thinking to help turn business opportunities into executable projects.
+      </div>
+
+      <a class="cta" href="mailto:mavijit11@gmail.com">Collaborate with Me</a>
+    </section>
+
+    <section class="section">
+      <button class="section-header">
+        <div class="num">1</div>
+        <div class="title">Business Development & Exhibition Management</div>
+        <div class="pm">−</div>
+      </button>
+      <div class="content">
+        <div class="inner">
+          <p>Over 12 years of experience across marketing, sales, and B2B exhibition management, combining client communication, business development, tender preparation, and data-led thinking.</p>
+          <ul>
+            <li>Develop business through exhibition stall sales, stall fabrication, and corporate events.</li>
+            <li>Lead client pitching and visitor marketing initiatives.</li>
+            <li>Coordinate multiple teams and projects simultaneously.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <button class="section-header">
+        <div class="num">2</div>
+        <div class="title">Client Communication & Project Delivery</div>
+        <div class="pm">−</div>
+      </button>
+      <div class="content">
+        <div class="inner">
+          <p>Building strong relationships with clients, teams, vendors, and industry associations to ensure projects are delivered smoothly and on time.</p>
+          <ul>
+            <li>Client pitching and relationship management.</li>
+            <li>Collaboration with creative and operations teams.</li>
+            <li>Coordination for national and international exhibitions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <button class="section-header">
+        <div class="num">3</div>
+        <div class="title">Tenders, Business Cases & Operations</div>
+        <div class="pm">−</div>
+      </button>
+      <div class="content">
+        <div class="inner">
+          <p>Experience preparing tenders, facilitating budgets, supporting company policies, and managing operational documentation for projects involving government, NGOs, international organisations, and corporate clients.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <button class="section-header">
+        <div class="num">4</div>
+        <div class="title">Data-Led Business Thinking & Education</div>
+        <div class="pm">−</div>
+      </button>
+      <div class="content">
+        <div class="inner">
+          <p>Academic foundations in Marketing, Finance, Population Studies, and Business Analytics support a data-led approach to business decisions and market intelligence.</p>
+          <ul>
+            <li>BBA in Finance & Marketing</li>
+            <li>Master's in Population, Reproductive Health, Gender and Development</li>
+            <li>MSc in Business Analytics for Decision Makers</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <button class="section-header">
+        <div class="num">5</div>
+        <div class="title">Experience & Professional Background</div>
+        <div class="pm">−</div>
+      </button>
+      <div class="content">
+        <div class="inner">
+          <p>Currently Senior Manager, International Business at Extreme Exhibition & Event Solution Ltd., with earlier experience in sales, marketing, client service, and advertising, including work with Ogilvy & Mather.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  Avijit Mondal • 2026 • Built with the AI Badge
+</footer>
+
+<script>
+const root=document.documentElement;
+
+document.getElementById('themeBtn').onclick=()=>{
+ root.classList.toggle('light');
+ localStorage.setItem(
+   'theme',
+   root.classList.contains('light')?'light':'dark'
+ );
+};
+
+const contents=[...document.querySelectorAll('.content')];
+const buttons=[...document.querySelectorAll('.section-header')];
+let open=true;
+
+buttons.forEach(btn=>{
+ btn.onclick=()=>{
+   const content=btn.nextElementSibling;
+   const icon=btn.querySelector('.pm');
+
+   content.classList.toggle('closed');
+   icon.textContent=content.classList.contains('closed')?'+':'−';
+ };
+});
+
+document.getElementById('toggleAll').onclick=()=>{
+ open=!open;
+
+ contents.forEach(c=>{
+   c.classList.toggle('closed',!open);
+ });
+
+ document.querySelectorAll('.pm').forEach(i=>{
+   i.textContent=open?'−':'+';
+ });
+
+ document.getElementById('toggleAll').textContent=open?'−':'+';
+};
+</script>
+
+</body>
+</html>
